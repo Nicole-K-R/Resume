@@ -1,18 +1,5 @@
-%%%%%%%%%%%%%%%%%
-% This is altacv.cls (v1.1.3, 30 April 2017) written by
-% LianTze Lim (liantze@gmail.com).
-%
-%% It may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2003/12/01 or later.
-%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{altacv}[2017/04/30 AltaCV v1.1.3, yet another alternative class for a résumé/curriculum vitae.]
-
 %% v1.1: Optionally load academicons
 \newif\if@academicons
 \DeclareOption{academicons}{\@academiconstrue}
@@ -99,6 +86,7 @@
 \newcommand{\location}[1]{\printinfo{\locationsymbol}{#1}}
 % *** Font Sizes *** %
 \newcommand\HUGE{\@setfontsize\Huge{25}{30}} 
+\newcommand\contactSize{\@setfontsize\tiny{3}{3.5}} 
 
 % ***** Header ***** %
 \newcommand{\makecvheader}{%
@@ -113,26 +101,23 @@
 % ***** Contact Info ***** %
 \newcommand{\contactInfo}[2]{
   \begingroup
-  \begin{changemargin}{-0.5cm}{0cm} %% Add left margin
-    {\phone\bfseries\color{emphasis}\@phoneText\tiny\scalebox{0.6}\par}
-{\mailaddress\bfseries\color{emphasis}\@emailText\tiny\scalebox{0.6}\par}
-{\homepage\bfseries\color{emphasis}\@webText\tiny\scalebox{0.6}\par}
-{\github\bfseries\color{emphasis}\@githubText\tiny\scalebox{0.6}\par}
-{\linkedin\bfseries\color{emphasis}\@linkedinText\tiny\scalebox{0.6}\par}
+  \begin{changemargin}{-0.03cm}{0cm} %% Add left margin
+{\phone\contactSize\color{emphasis}\@phoneText\scalebox{0.8}\par}
+{\mailaddress\contactSize\color{emphasis}\@emailText\scalebox{0.8}\par}
+{\homepage\contactSize\color{emphasis}\@webText\scalebox{0.8}\par}
+{\github\contactSize\color{emphasis}\@githubText\scalebox{0.8}\par}
+{\linkedin\contactSize\color{emphasis}\@linkedinText\scalebox{0.8}\par}
    \end{changemargin}
   \endgroup\smallskip
 }
 
-\renewenvironment{quote}{\color{accent}\itshape\large}{\par}
-
 % ***** cvsection ***** %
 \newcommand{\cvsection}[2][]{%
-%   \bigskip%
-	\medskip
+	\smallskip
   \ifstrequal{#1}{}{}{\marginpar
   {\vspace*
   	% \dimexp #pt defines the vertical displacement of the right column
-  	{\dimexpr-55pt-\baselineskip}\raggedright\input{#1}
+  	{\dimexpr-53pt-\baselineskip}\raggedright\input{#1}
   }}%
   {\color{heading}\LARGE\bfseries\MakeUppercase{#2}}\\[-1ex]%
   {\color{heading}\rule{\linewidth}{2pt}\par}\medskip % Underline
@@ -151,9 +136,31 @@
   \textbf{\color{emphasis}#2}\par % Company
   \smallskip 
   % Time range
-  {\small\makebox[0.86\linewidth][l]{\faCalendar \hspace{0.5em}#3}%
+  {\small\makebox[0.77\linewidth][l]{\faCalendar \hspace{0.5em}#3}%
   \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}#4}}\par} % Location
   \smallskip
+}
+
+% ***** cvproject ***** %
+\newcommand{\cvproject}[4]{%
+  {\large\color{emphasis}#1\par} % Job title
+  \smallskip
+  % Time range
+  {\small\makebox[0.77\linewidth][l]{\faCalendar \hspace{0.5em}#2}%
+  \ifstrequal{#3}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}#3}}\par} % Location
+  \smallskip
+}
+
+% ***** cvskill ***** %
+\newcommand{\cvskill}[2]{%
+\textcolor{emphasis}{\textbf{#1}}\hfill
+\foreach \x in {1,...,5}{%
+  \space{\ifnumgreater{\x}{#2}{\color{body!30}}{\color{accent}}\faCircle}}\par%
+}
+
+% ***** cvskillType ***** %
+\newcommand{\cvskillType}[2]{%
+	\textcolor{accent}{\Large\textbf{#1}}\hfill
 }
 
 % ***** cvachievement ***** %
@@ -170,84 +177,7 @@
   \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
 }
 
-% ***** cvskill ***** %
-\newcommand{\cvskill}[2]{%
-\textcolor{emphasis}{\textbf{#1}}\hfill
-\foreach \x in {1,...,5}{%
-  \space{\ifnumgreater{\x}{#2}{\color{body!30}}{\color{accent}}\faCircle}}\par%
-}
-
-% % Adapted from @Jake's answer at http://tex.stackexchange.com/a/82729/226
-% \newcommand{\wheelchart}[3]{%
-%     \begingroup\centering
-%     \def\innerradius{#2}%
-%     \def\outerradius{#1}%
-%     % Calculate total
-%     \pgfmathsetmacro{\totalnum}{0}%
-%     \foreach \value/\colour/\name in {#3} {%
-%         \pgfmathparse{\value+\totalnum}%
-%         \global\let\totalnum=\pgfmathresult%
-%     }%
-%     \begin{tikzpicture}
-
-%       % Calculate the thickness and the middle line of the wheel
-%       \pgfmathsetmacro{\wheelwidth}{\outerradius-\innerradius}
-%       \pgfmathsetmacro{\midradius}{(\outerradius+\innerradius)/2}
-
-%       % Rotate so we start from the top
-%       \begin{scope}[rotate=-90]
-
-%       % Loop through each value set. \cumnum keeps track of where we are in the wheel
-%       \pgfmathsetmacro{\cumnum}{0}
-%       \foreach \value/\width/\colour/\name in {#3} {
-%             \pgfmathsetmacro{\newcumnum}{\cumnum + \value/\totalnum*360}
-
-%             % Calculate the percent value
-%             \pgfmathsetmacro{\percentage}{\value/\totalnum*100}
-%             % Calculate the mid angle of the colour segments to place the labels
-%             \pgfmathsetmacro{\midangle}{-(\cumnum+\newcumnum)/2}
-
-%             % This is necessary for the labels to align nicely
-%             \pgfmathparse{
-%                (-\midangle>180?"west":"east")
-%             } \edef\textanchor{\pgfmathresult}
-%             \pgfmathparse{
-%                (-\midangle>180?"flush left":"flush right")
-%             } \edef\textalign{\pgfmathresult}
-%             \pgfmathsetmacro\labelshiftdir{1-2*(-\midangle<180)}
-
-%             % Draw the color segments. Somehow, the \midrow units got lost, so we add 'pt' at the end. Not nice...
-%             \filldraw[draw=white,fill=\colour] (-\cumnum:\outerradius) arc (-\cumnum:-(\newcumnum):\outerradius) --
-%             (-\newcumnum:\innerradius) arc (-\newcumnum:-(\cumnum):\innerradius) -- cycle;
-
-%             % Draw the data labels
-%             \draw  [*-,thin,emphasis] node [append after command={(\midangle:\midradius pt) -- (\midangle:\outerradius + 1ex) -- (\tikzlastnode)}] at (\midangle:\outerradius + 1ex) [xshift=\labelshiftdir*0.5cm,inner sep=1ex, outer sep=0pt, text width=\width,anchor=\textanchor,align=\textalign,font=\small,text=body]{\name};
-%             % Set the old cumulated angle to the new value
-%             \global\let\cumnum=\newcumnum
-%         }
-%       \end{scope}
-%     \end{tikzpicture}\par
-%     \endgroup
-% }
-
-% ***** cvref ***** %
-\newcommand{\cvref}[3]{%
-  \smallskip
-  \textcolor{emphasis}{\textbf{#1}}\par
-  \begin{description}[font=\color{accent},style=multiline,leftmargin=1.25em]
-  \item[\emailsymbol] #2
-  \item[\small\mailsymbol] #3
-  \end{description}
-%   \medskip
-}
-
-\newenvironment{cvcolumn}[1]{\begin{minipage}[t]{#1}\raggedright}{\end{minipage}}
-
 \RequirePackage[backend=biber,style=authoryear,sorting=ydnt]{biblatex}
-%% For removing numbering entirely when using a numeric style
-% \setlength{\bibhang}{1em}
-% \DeclareFieldFormat{labelnumberwidth}{\makebox[\bibhang][l]{\itemmarker}}
-% \setlength{\biblabelsep}{0pt}
 \defbibheading{pubtype}{\cvsubsection{#1}}
 \renewcommand{\bibsetup}{\vspace*{-\baselineskip}}
 \AtEveryBibitem{\makebox[\bibhang][l]{\itemmarker}}

@@ -4,9 +4,6 @@
 %% Then compile with XeLaTeX or LuaLaTeX.
 % \documentclass[10pt,a4paper,academicons]{altacv}
 
-%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
-% \documentclass[10pt,a4paper,normalphoto]{altacv}
-
 \documentclass[8pt,a4paper]{altacv}
 
 %% AltaCV uses the fontawesome and academicon fonts
@@ -21,9 +18,9 @@
 % Change the page layout if you need to 
 % Total width = 21 cm
 \geometry{left = 0.75cm, % Margin for left of page
-right = 6.25cm, % Margin for right of page (from right of left sidebar)
-marginparwidth = 4.5cm, % Should be (right - marginparsep - left)
-marginparsep = 1.0cm, % Space between left and right column
+right = 5.5cm, % Margin for right of page (from right of left sidebar)
+marginparwidth = 4.25cm, % Should be (right - marginparsep - left)
+marginparsep = 0.5cm, % Space between left and right column
 top = 0.75cm, % Margin for top of page
 bottom = 0.75cm} % Margin for bottom of page
 
@@ -33,6 +30,7 @@ bottom = 0.75cm} % Margin for bottom of page
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[default]{lato}
+\usepackage{multicol}
 
 % If using xelatex or lualatex:
 % \setmainfont{Lato}
@@ -62,6 +60,7 @@ bottom = 0.75cm} % Margin for bottom of page
 \name{Nicole Rosario}
 \tagline{Mechatronics Engineering -- University of Waterloo}
 
+% Contact Info %
 \phoneText{(647) 622-7473}
 \emailText{n2rosari@edu.uwaterloo.ca}
 \webText{nicolerosario.com}
@@ -83,8 +82,7 @@ bottom = 0.75cm} % Margin for bottom of page
 % ----- INTRIGUE MEDIA SECTION ----- %
 \cvevent{Back-End JavaScript Developer (Co-op)}{Intrigue Media}{Jan. 2018 -- Present}{Guelph, ON}{\color{accent}Node.js, PHP, Git}
 \begin{itemize}
-\item Led the \$5 billion acquisition of the company with Verizon -- the entity which believed most in the immense value Yahoo!\ has created
-\item Acquired Tumblr for \$1.1 billion and moved the company's blog there
+\item Designed, developed, and tested a CSV importer to secure access and prevent error values from reaching the database 
 \end{itemize}
 \divider
 
@@ -97,88 +95,71 @@ bottom = 0.75cm} % Margin for bottom of page
 \divider
 
 % ----- WATERLOOP SECTION ----- %
-\cvevent{SpaceX Hyperloop Competition (Design Team)}{Waterloop}{Fall 2016 -- Present}{Waterloo, ON}{\color{accent}Arduino, SolidWorks, Machining, Soldering} \\
-\textbf{Electromagnetic Sub-team -- EC Brakes \& Magnetic Wheels (Goose 1 \& 2 pods)} \\
+\cvevent{SpaceX Hyperloop Competition (Design Team)}{Waterloop}
+{Fall 2016 -- Present}{Waterloo, ON}{\color{accent}Arduino, SolidWorks, Machining, Soldering} \\
+\textbf{Electromagnetic Sub-team -- Eddy Current (EC) Braking System \& Magnetic Wheels}\\
+\textbf{Software Sub-team -- Website \& Embedded Systems}
 \begin{itemize}
 \item Developed, tested, and executed code to test small/full scale hallbach wheels
-\item Liased with software team to develop and test code for the full scale hallbach wheels
-\item Designed and manufactured parts for the eddy current (EC) braking system and hallbach wheels using SolidWorks and machine shop tools
-\end{itemize}
-\textbf{Software Sub-team -- Website and Embedded Systems}\\
-\begin{itemize}
+\item Designed and manufactured parts for the EC brakes and hallbach wheels using SolidWorks and machine shop tools
 \item Collaborated with teammates to design the UI/UX for the website
 \end{itemize}
 \divider
 
 % ----- WATONOMOUS SECTION ----- %
-\cvevent{GM/SAE Autonomous Car (Design Team)}{Watonomous}{May -- Aug. 2017}{Waterloo, ON}{\color{accent}Skills}\\
-\textbf{Software Team -- Object Detection} \\
-\begin{itemize}
-\item Appointed by the founder Larry Page in 2001 to lead the Product Management and User Interaction teams
-\end{itemize}
-\divider
+% \cvevent{GM/SAE Autonomous Car (Design Team)}{Watonomous (Software Team -- Object Detection)}{May -- Aug. 2017}{Waterloo, ON}{\color{accent}Python}\\
+% \begin{itemize}
+% \item Researched different aspects of autonomous vehicles, primarily object detection sensors, such as radar and LiDAR
+% \end{itemize}
+% \divider
 
 % ----- 1A PROJECT SECTION ----- %
-\cvevent{Robotic Claw Machine (Course Project)}{Mechatronics Engineering \& Digital Computation Courses }{Oct. -- Dec. 2016}{Waterloo, ON}{\color{accent}Skills}
+\cvevent{Robotic Claw Machine (Course Project)}{Mechatronics Engineering \& Digital Computation Courses }{Oct. -- Dec. 2016}{Waterloo, ON}{\color{accent}RobotC, C++, AutoCAD, Laser Cutting, Machining}
 \begin{itemize}
-\item Joined the company as employe \#20 and female employee \#1
-\item Developed targeted advertisement in order to use user's search queries and show them related ads
+\item Applied engineering design by identifying constraints/criteria and prototyping
+\item Designed and implemented software for the robotic claw machine in RobotC
+\item Utilized AutoCAD, laser cutter, and machine tools for design and construction
 \end{itemize}
 \bigskip
 
 % ===== PROJECTS/HACKATHONS SECTION ===== %
 \cvsection{PROJECTS/HACKATHONS}
 % ----- QHacks SECTION ----- %
-\cvevent{ER Sign-in Alexa Bot (Winner for Best Healthcare Hack)}{QHacks 2018 (Hackathon -- 36 Hour)}{Feb. 2018}{Quenn's University}{\color{accent}Amazon Alexa, Node.js, EJS, MongoDB}
+\cvevent{OctoBud (Hackathon -- 36 Hour)}{QHacks 2018 (Winner for Best Healthcare Hack)}{Feb. 2018}{Quenn's University}{\color{accent}Amazon Alexa, Node.js, EJS, MongoDB}
 \begin{itemize}
-\item Joined the company as employe \#20 and female employee \#1
-\item Developed targeted advertisement in order to use user's search queries and show them related ads
+\item Developed an Alexa bot to decrease wait times in the ER by collecting patients' info when they arrive to allow nurses to spend their time on more important tasks
 \end{itemize}
+\divider
 
 % ----- DeltaHacks SECTION ----- %
-\cvevent{Social Media Alexa Skill (Winner for Best IoT Voice Control Hack)}{DeltaHacks 2018 (Hackathon -- 36 Hour)}{Jan. 2018}{McMaster University}{\color{accent}Amazon Alexa, Node.js}
+\cvevent{MyFriends (Hackathon -- 36 Hour)}{DeltaHacks 2018 (Winner for Best IoT Voice Control Hack)}{Jan. 2018}{McMaster University}{\color{accent}Amazon Alexa, Node.js}
 \begin{itemize}
-\item Joined the company as employe \#20 and female employee \#1
-\item Developed targeted advertisement in order to use user's search queries and show them related ads
+\item Developed a social media Alexa skill so friends can share events and invite others through Alexa or SMS
 \end{itemize}
+\divider
 
 % ----- PennApps SECTION ----- %
-\cvevent{Code Format Checker (Top 30 of 160+ teams)}{PennApps Winter 2018 (Hackathon -- 36 Hour)}{Jan. 2018}{University of Pennsylvania}{\color{accent}Node.js, EJS, MongoDB}
+\cvevent{CodeChecker (Hackathon -- 36 Hour)}{PennApps Winter 2018 (Top 30 of 160+ teams)}{Jan. 2018}{University of Pennsylvania}{\color{accent}Node.js, EJS, MongoDB}
 \begin{itemize}
-\item Joined the company as employe \#20 and female employee \#1
-\item Developed targeted advertisement in order to use user's search queries and show them related ads
+\item Developed a web app and used the GitHub API to teach people how to better format their code and for employers to check applicants' code
 \end{itemize}
+\divider
 
 % ----- DRONE SECTION ----- %
-\cvevent{Drone}{Google}{23 June 1999 -- 2001}{Palo Alto, CA}{\color{accent}Skills}
+\cvproject{Drone (Side Project)}{May 2017 -- Present}{}{Skills}{\color{accent}Arduino, Soldering}
 \begin{itemize}
-\item Joined the company as employe \#20 and female employee \#1
-\item Developed targeted advertisement in order to use user's search queries and show them related ads
+\item Acquired knowledge of embedded software by developing a wireless remote control
+\item Applied electrical engineering skills to solder/secure electrical connections
 \end{itemize}
+\divider
 
 % ----- E-LONGBOARD SECTION ----- %
-\cvevent{Electric Longboard}{Google}{23 June 1999 -- 2001}{Palo Alto, CA}{\color{accent}Skills}
+\cvproject{Electric Longboard (Side Project)}{Feb. 2018 -- Present}{}{Skills}{\color{accent}Arduino, Soldering}
 \begin{itemize}
-\item Joined the company as employe \#20 and female employee \#1
-\item Developed targeted advertisement in order to use user's search queries and show them related ads
+\item Made a longboard electric and built a bluetooth remote to control the longboard 
 \end{itemize}
 
-
 \clearpage
-
-\cvsection[page2sidebar]{Publications}
-
-\nocite{*}
-
-\printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
-
-\divider
-
-\printbibliography[heading=pubtype,title={\printinfo{\faFileTextO}{Journal Articles}}, type=article]
-
-\divider
-
-\printbibliography[heading=pubtype,title={\printinfo{\faGroup}{Conference Proceedings}},type=inproceedings]
 
 %% If the NEXT page doesn't start with a \cvsection but you'd
 %% still like to add a sidebar, then use this command on THIS
