@@ -113,12 +113,12 @@
 % ***** Contact Info ***** %
 \newcommand{\contactInfo}[2]{
   \begingroup
-  \begin{changemargin}{1.5cm}{0cm} %% Add left margin
-    {\phone\bfseries\color{emphasis}\@phoneText\tiny\scalebox{0.5}\par}
-{\mailaddress\bfseries\color{emphasis}\@emailText\tiny\scalebox{0.5}\par}
-{\homepage\bfseries\color{emphasis}\@webText\tiny\scalebox{0.5}\par}
-{\github\bfseries\color{emphasis}\@githubText\tiny\scalebox{0.5}\par}
-{\linkedin\bfseries\color{emphasis}\@linkedinText\tiny\scalebox{0.5}\par}
+  \begin{changemargin}{-0.5cm}{0cm} %% Add left margin
+    {\phone\bfseries\color{emphasis}\@phoneText\tiny\scalebox{0.6}\par}
+{\mailaddress\bfseries\color{emphasis}\@emailText\tiny\scalebox{0.6}\par}
+{\homepage\bfseries\color{emphasis}\@webText\tiny\scalebox{0.6}\par}
+{\github\bfseries\color{emphasis}\@githubText\tiny\scalebox{0.6}\par}
+{\linkedin\bfseries\color{emphasis}\@linkedinText\tiny\scalebox{0.6}\par}
    \end{changemargin}
   \endgroup\smallskip
 }
@@ -153,7 +153,7 @@
   % Time range
   {\small\makebox[0.86\linewidth][l]{\faCalendar \hspace{0.5em}#3}%
   \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}#4}}\par} % Location
-  \medskip
+  \smallskip
 }
 
 % ***** cvachievement ***** %
